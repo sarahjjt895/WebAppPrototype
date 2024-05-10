@@ -1,0 +1,801 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3.4 fr;
+  grid-template-rows: 0.09fr 0.8fr 2fr;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Header Header Header"
+    "Nav-Bar Performance-Breakdown Performance-Breakdown"
+    "Nav-Bar Performance-Overview Performance-Overview";
+}
+
+.Header {
+  grid-area: Header;
+  width: 100%;
+  display: flex;
+  /* Use flexbox */
+  align-items: center;
+  text-indent: 5px;
+  height: 50px;
+  background-color: #e6d9b6;
+  position: fixed;
+  /* Ensure the header stays fixed in place */
+  top: 0;
+  left: 0;
+  margin: 0;
+  /* Remove any default margins */
+  padding: 0;
+  /* Remove any default padding */
+  z-index: 1000;
+  /* Ensure the header appears above other content */
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  /* Ensure the element behaves like an inline element */
+  margin-top: 10;
+  /* Reset the default margin */
+  margin-bottom: 0;
+  /* Reset the default margin */
+  vertical-align: middle;
+  /* Align the element vertically with the time-wrapper */
+  font-weight: normal;
+}
+
+h1 {
+  margin-left: 5px;
+  /* Adjust the margin to position the text */
+  font-size: 20px;
+}
+
+.Header h2 {
+  margin-left: 250px;
+  /* Adjust the margin to position the text */
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.options-container {
+  display: flex;
+  align-items: center;
+  /* Align items to the start of the container (below h3 text) */
+  margin-left: auto;
+  /* Push the container to the right */
+  margin-right: 10px;
+  border-radius: 20px;
+  /* Adjust the border-radius for curved corners */
+  overflow: hidden;
+  /* Ensure the overflow is hidden to hide the corners of buttons */
+  color: #fff;
+}
+
+.option-btn {
+  padding: 8px 10px;
+  width: 60px;
+  border: none;
+  background-color: #ffffff;
+  color: #050505;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.option-btn.active {
+  background-color: #333;
+  color: #f5f3f3;
+}
+
+.option-btn:hover {
+  background-color: #cccccc;
+  /* Change the background color on hover */
+}
+
+
+.Nav-Bar {
+  grid-area: Nav-Bar;
+  height: 100%;
+  width: 20vw;
+  /* Adjust the width as needed */
+  min-width: 150px;
+  /* Minimum width for smaller screens */
+  background-color: #333;
+  /* Change the background color as needed */
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  /* Use flexbox */
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Align items to the start of the container (top) */
+  align-items: center;
+  /* Center the content horizontally */
+}
+
+.Nav-Bar img {
+  width: 150px;
+  /* Adjust the width of the image */
+  height: 150px;
+  /* Adjust the height of the image */
+  margin-top: 70px;
+  /* Adjust the margin from the top of the nav bar */
+}
+
+.Nav-Bar h2 {
+  color: white;
+  /* Change the text color as needed */
+  margin-top: 175px;
+  /* Adjust the margin to create space between the image and text */
+  position: fixed;
+  display: flex;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.Nav-Bar p {
+  color: white;
+  /* Change the text color as needed */
+  font-size: 20px;
+}
+
+.settings-button {
+  position: relative;
+  display: flex;
+  /* Use flexbox to align items */
+  align-items: center;
+  /* Center items vertically */
+  justify-content: center;
+  /* Center items horizontally */
+  width: 120px;
+  /* Adjust the width of the button */
+  height: 40px;
+  /* Adjust the height of the button */
+  border-radius: 20px;
+  /* Adjust the border radius to create curved corners */
+  background-color: #fff;
+  /* Change the background color of the button */
+  color: #333;
+  /* Change the text color of the button */
+  border: 2px solid #333;
+  /* Add a border with color */
+  cursor: pointer;
+  /* Add cursor pointer on hover */
+  font-size: 18px;
+  ;
+}
+
+.slider-icon {
+  position: relative;
+  width: 10px;
+  /* Adjust the width of the icon */
+  height: auto;
+  /* Automatically adjust the height based on the width */
+  margin-left: 5px;
+  vertical-align: middle;
+  /* Align the icon vertically with the text */
+  max-width: 20%;
+  max-height: 45%;
+  margin-bottom: 70px;
+}
+
+.settings-button span {
+  flex: 1;
+  /* Allow the text to fill the available space */
+  text-align: center;
+  /* Center the text horizontally */
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: normal;
+  color: white;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+
+.Performance-Breakdown {
+  grid-area: Performance-Breakdown;
+  display: flex;
+  height: auto;
+  max-height: 250px;
+  min-height: 200px;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d3d0d0;
+  margin-left: 0;
+  padding-left: 280px;
+  padding-right: 100px;
+}
+
+.circle {
+  width: 14vw;
+  /* Adjust the size as needed */
+  height: 14vw;
+  /* Adjust the size as needed */
+  border-radius: 50%;
+  background-color: #ffffff;
+  position: relative;
+  /* Ensure the circles are positioned relative to their containing block */
+  margin-top: 10px;
+  /* Add a small margin to push the circles below the header */
+  margin-bottom: 10px;
+  font-size: 35px;
+  text-align: center;
+  display: flex;
+  /* Use flexbox */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  border: 2px solid #e6d9b6;
+  /* Add a border with pink color */
+}
+
+.circle>.label {
+  font-size: 18px;
+}
+
+.Performance-Overview {
+  grid-area: Performance-Overview;
+  background-color: #ffffff;
+  /* Set background color as needed */
+  height: 150vh;
+  /* Make it full height of the viewport */
+  padding-left: 200px;
+}
+
+
+/* CSS to style the date input */
+.date-selection input[type="date"] {
+  width: 100%;
+  /* Set the width to 100% to fill the container */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.date-selection {
+  margin-left: 200px;
+  /* Push the date input to the right */
+
+}
+
+/* CSS to style the chart container */
+#areaChart {
+  width: 1000px;
+  /* Adjust the maximum width as needed */
+  height: 1000px;
+  /* Adjust the maximum height as needed */
+  margin: auto;
+  /* Center the chart horizontally */
+}
+
+
+.plus-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  /* Adjust size of the circle */
+  height: 60px;
+  /* Adjust size of the circle */
+  background-color: #333;
+  /* Background color of the circle */
+  color: #ffffff;
+  /* Text color */
+  border-radius: 50%;
+  /* Make it a circle */
+  font-size: 40px;
+  /* Adjust size of the plus icon */
+  text-align: center;
+  /* Center the text */
+  line-height: 50px;
+  /* Center the text vertically */
+  cursor: pointer;
+  /* Add cursor pointer on hover */
+  z-index: 9999;
+  /* Ensure it is above other content */
+}
+
+.overlay {
+  display: none;
+  /* Hide overlay by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  z-index: 999;
+  opacity: 0;
+  /* Ensure it is above other content but below the plus button */
+  transition: opacity 0.3s ease;
+  /* Add transition effect */
+  animation: 3s;
+}
+
+.overlay.show {
+  display: block;
+  /* Show the overlay container */
+  opacity: 1;
+  /* Make it fully visible */
+}
+
+.overlay-content {
+  position: absolute;
+  /* Absolute positioning to center the content */
+  top: 50%;
+  /* Center vertically */
+  left: 50%;
+  /* Center horizontally */
+  transform: translate(-50%, -50%);
+  /* Center the content both horizontally and vertically */
+  max-width: 100%;
+  /* Set maximum width of the overlay content */
+  max-height: 100%;
+  /* Set maximum height of the overlay content */
+  overflow: auto;
+  /* Enable scrolling if content overflows */
+  background-color: #fff;
+  /* Background color of the overlay content */
+  padding: 50px;
+  /* Padding for the content */
+  border-radius: 10px;
+  /* Rounded corners */
+}
+
+.overlay-content label {
+  display: inline-block;
+  width: 50px;
+  /* Adjust width as needed */
+}
+
+.overlay-content input[type="date"] {
+  display: inline-block;
+  width: calc(100% - 60px);
+  /* Adjust width as needed */
+  /* Subtracting the width of the label */
+}
+
+
+
+#session-date {
+  margin-top: 20px;
+  width: 160px;
+  /* Adjust width as needed */
+  padding: 8px 10px;
+  /* Adjust padding as needed */
+  border: 1px solid #ccc;
+  /* Add border */
+  border-radius: 5px;
+  /* Add border radius */
+  font-size: 16px;
+  /* Adjust font size */
+  box-sizing: border-box;
+  /* Include padding and border in element's total width and height */
+  font-size: 20px;
+}
+
+#session-date:focus {
+  outline: none;
+  /* Remove default focus outline */
+}
+
+.inputdate-container,
+.inputtime-container {
+  margin-bottom: 10px;
+  /* Add a small gap between date and time inputs */
+  text-align: left;
+  /* Align inputs to the left */
+}
+
+
+.inputdate-container input[type="date"],
+.inputtime-container input[type="time"] {
+  width: 160px;
+  /* Adjust the width of the inputs as needed */
+  margin-left: 80px;
+  border: 1px solid #ccc;
+  /* Add border */
+  font-family: sans-serif;
+  font-size: 20px;
+  padding: 8px 10px;
+}
+
+
+
+.input-distance-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-distance-container label,
+.input-distance-container input[type="text"],
+.input-distance-container span {
+  margin-right: 20px;
+}
+
+.input-distance-container input[type="text"] {
+  width: 70px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 20px;
+  margin-left: 65px;
+  font-family: sans-serif;
+}
+
+.input-distance-container span {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --inactive: #ccc;
+  ;
+  --active: #686868;
+  ;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+#time_wrapper {
+  width: 70%;
+  height: 50px;
+  margin: 0 auto;
+  /*   background: pink; */
+  position: relative;
+  transform: scale(1);
+  margin-left: 134px;
+  margin-top: -30px;
+  padding-bottom: 25px;
+
+}
+
+#time_input {
+  border: 2px solid var(--inactive);
+  width: 77%;
+  color: #4d4d4d;
+  display: flex;
+  align-items: center;
+
+}
+
+input {
+  width: 50px;
+  height: 60px;
+  border: none;
+  box-sizing: border-box;
+  padding: auto 10px;
+  text-align: center;
+  color: #000000;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.label {
+  font-size: 8px;
+  position: absolute;
+  top: 4.5px;
+}
+
+.label.lbl-hrs {
+  left: 14px;
+}
+
+.label.lbl-min {
+  left: 14px;
+}
+
+.label.lbl-sec {
+  left: 13px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#time_input,
+input {
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+
+input:focus+.label {
+  color: var(--active);
+}
+
+input.invalid:focus {
+  outline: 3px solid red;
+}
+
+input.invalid:focus+.label {
+  color: red;
+}
+
+#error {
+  width: 135px;
+  position: relative;
+  top: -8px;
+  color: red;
+  visibility: visible;
+  margin-left: 134px;
+}
+
+.input-steps-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-steps-container label,
+.input-steps-container input[type="text"],
+.input-steps-container span {
+  margin-right: 20px;
+}
+
+.input-steps-container input[type="text"] {
+  width: 100px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 20px;
+  margin-left: 65px;
+
+}
+
+.input-steps-container span {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.input-pace-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-pace-container label {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 10px;
+}
+
+.input-pace-container input[type="text"] {
+  width: 70px;
+  padding: 6px 12px;
+  border: 1px solid #4d4c4c;
+  border-radius: 3px;
+  font-size: 20px;
+  margin-left: 74px;
+  margin-right: 10px;
+}
+
+.input-pace-container span {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.overlay-content h2 {
+  text-align: center;
+  color: black
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  /* Adjust spacing as needed */
+  position: relative;
+}
+
+.overlay-button {
+  border: none;
+  background-color: transparent;
+  color: #000;
+  /* Button text color */
+  font-size: 16px;
+  text-decoration: none;
+  /* Remove default underline */
+  cursor: pointer;
+  margin: 0 20px;
+
+}
+
+.overlay-button:hover {
+  text-decoration: none;
+  /* Remove underline on hover */
+}
+
+.button-container::before,
+.button-container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  /* Full width */
+  height: 1px;
+  background-color: #000;
+  /* Line color */
+}
+
+.button-container::before {
+  top: -10px;
+  /* Adjust position above text */
+}
+
+.button-container::after {
+  bottom: -10px;
+  /* Adjust position below text */
+}
+
+.overlay-button.active {
+  font-weight: bold;
+}
+
+.next-button {
+  display: block;
+  /* Ensure the button takes up the full width */
+  margin: 0 auto;
+  /* Center the button horizontally */
+  width: 120px;
+  /* Adjust the width of the button */
+  height: 40px;
+  /* Adjust the height of the button */
+  border-radius: 20px;
+  /* Adjust the border radius to create curved corners */
+  background-color: #fff;
+  /* Change the background color of the button */
+  color: #333;
+  /* Change the text color of the button */
+  border: 2px solid #333;
+  /* Add a border with color */
+  cursor: pointer;
+  /* Add cursor pointer on hover */
+  font-size: 18px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+.percentage-bar-container {
+  width: 100%;
+  height: 20px;
+  /* Adjust height as needed */
+  background-color: #f0f0f0;
+  /* Background color of the container */
+  border-radius: 5px;
+  /* Rounded corners */
+  margin-top: 10px;
+  /* Adjust spacing as needed */
+}
+
+.percentage-bar {
+  width: 50%;
+  /* Set initial width to 50% */
+  height: 100%;
+  background-color: #4CAF50;
+  /* Green color for the bar */
+  border-radius: 5px;
+  /* Rounded corners */
+  transition: width 0.5s ease-in-out;
+  /* Smooth transition effect */
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  /* Adjust spacing as needed */
+}
+
+.dropdown-container label {
+  margin-right: 40px;
+  /* Adjust spacing between label and select */
+}
+
+.dropdown-container select {
+  width: 150px;
+  /* Adjust width as needed */
+  height: 30px;
+}
+
+.submit-button {
+  display: block;
+  /* Ensure the button takes up the full width */
+  margin: 0 auto;
+  /* Center the button horizontally */
+  width: 120px;
+  /* Adjust the width of the button */
+  height: 40px;
+  /* Adjust the height of the button */
+  border-radius: 20px;
+  /* Adjust the border radius to create curved corners */
+  background-color: #fff;
+  /* Change the background color of the button */
+  color: #333;
+  /* Change the text color of the button */
+  border: 2px solid #333;
+  /* Add a border with color */
+  cursor: pointer;
+  /* Add cursor pointer on hover */
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Apply focus outline to all input elements except sliders */
+input:not([type="range"]):focus {
+  outline: 3px solid var(--active);
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+}
+
+#energy-slider {
+  width: 200px;
+  /* Adjust width as needed */
+  margin-left: 10px;
+}
+
+#energy-output {
+  margin-left: 10px;
+}
+
+
+#container {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.date-selector {
+  margin-bottom: 20px;
+}
+
+.date-selector label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 250px;
+}
+
+.date-selector input[type="date"] {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-left: 250px;
+}

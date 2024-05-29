@@ -203,6 +203,11 @@ function validateFieldsAndOpenMoodOverlay() {
         document.getElementById('error-message').textContent = 'Please complete all fields'; // Display error message
     }
 }
+overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closeOverlay();
+    }
+  });
 
 document.addEventListener('DOMContentLoaded', function () {
     const nextButton = document.querySelector('.next-button');
@@ -353,9 +358,12 @@ document.querySelector('.submit-button').addEventListener('click', function () {
     // Close mood overlay
     closeMoodOverlay();
 
+    // Update performance-date to match session-date
+    const sessionDate = document.getElementById('session-date').value;
+    document.getElementById('performance-date').value = sessionDate;
+
     // Populate chart after data submission
-    const selectedDate = document.getElementById('performance-date').value;
-    populateChart(selectedDate); // Call populateChart after submitting data
+    populateChart(sessionDate); // Call populateChart after submitting data
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -372,10 +380,27 @@ document.addEventListener('DOMContentLoaded', function () {
     closeOverlay();
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize the chart with default or existing data
+    const defaultDate = getDefaultDate();
+    document.getElementById('performance-date').value = defaultDate;
+    initializeChart(defaultDate);
+
+    // Attach event listeners to buttons and input fields
+    const submitButton = document.getElementById('submit-button');
+    submitButton.addEventListener('click', populateChart);
+
+    const dateInput = document.getElementById('performance-date');
+    dateInput.addEventListener('change', updateDataBasedOnDate);
+
+});
+
+
+
 // Function to initialize the chart with data for a specific date
 function initializeChart(date) {
     // Retrieve data for the given date or use default data if not available
-    const defaultData = retrieveDataForDate(date) || getDefaultChartData();
+    const dataForDate = retrieveDataForDate(date) || getDefaultChartData();
 
     // Chart.js configuration
     const config = {
@@ -383,14 +408,16 @@ function initializeChart(date) {
         data: {
             labels: ['Distance', 'Duration', 'Steps', 'Pace'],
             datasets: [{
-                label: 'Performance Overview',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                data: defaultData.map(item => item.value),
+                label: 'Performance',
+                backgroundColor: 'rgba(230, 217, 182, 1)',
+                borderColor: 'rgba(184, 158, 89, 1)',
+                data: dataForDate.map(item => item.value),
                 fill: true,
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -407,19 +434,23 @@ function initializeChart(date) {
 
 // Function to populate the chart with user-entered data
 function populateChart() {
+    // Retrieve session date from local storage
+    const sessionDate = localStorage.getItem('session_date');
+
     // Retrieve data from input fields
-    const distance = parseFloat(document.getElementById('distance').value);
-    const duration = parseInt(document.getElementById('hours').value) * 3600 +
-        parseInt(document.getElementById('minutes').value) * 60 +
-        parseInt(document.getElementById('seconds').value);
-    const steps = parseInt(document.getElementById('steps').value);
-    const pace = parseFloat(document.getElementById('auto-pace').value);
+    const distance = parseFloat(document.getElementById('distance').value) || 0;
+    const hours = parseInt(document.getElementById('hours').value) || 0;
+    const minutes = parseInt(document.getElementById('minutes').value) || 0;
+    const seconds = parseInt(document.getElementById('seconds').value) || 0;
+    const duration = hours * 3600 + minutes * 60 + seconds;
+    const steps = parseInt(document.getElementById('steps').value) || 0;
+    const pace = parseFloat(document.getElementById('auto-pace').value) || 0;
 
     // Define maximum values
-    const maxDistance = 15;
-    const maxDuration = 1 * 3600 + 5 * 60 + 0; // Duration in seconds
-    const maxSteps = 20000;
-    const maxPace = 6.0;
+    const maxDistance = 15; // Example max value
+    const maxDuration = 2 * 3600; // Example max value (2 hours)
+    const maxSteps = 20000; // Example max value
+    const maxPace = 6.0; // Example max value
 
     // Calculate percentages
     const distancePercentage = (distance / maxDistance) * 100;
@@ -433,8 +464,15 @@ function populateChart() {
     chart.update();
 
     // Save the input data for the current date
-    const currentDate = document.getElementById('performance-date').value;
+    const currentDate = document.getElementById('session-date').value;
     saveDataForDate(currentDate, [
+        { label: 'Distance', value: distancePercentage },
+        { label: 'Duration', value: durationPercentage },
+        { label: 'Steps', value: stepsPercentage },
+        { label: 'Pace', value: pacePercentage }
+    ]);
+
+    console.log(`Data saved for ${currentDate}:`, [
         { label: 'Distance', value: distancePercentage },
         { label: 'Duration', value: durationPercentage },
         { label: 'Steps', value: stepsPercentage },
@@ -445,7 +483,19 @@ function populateChart() {
 // Function to update data based on selected date
 function updateDataBasedOnDate() {
     const selectedDate = document.getElementById('performance-date').value;
-    populateChart(selectedDate);
+    const dataForDate = retrieveDataForDate(selectedDate) || getDefaultChartData();
+    const chart = window.performanceChart;
+
+    // Update chart data
+    chart.data.datasets[0].data = dataForDate.map(item => item.value);
+    chart.update();
+
+   
+    // Populate circles with the saved data
+    document.getElementById('distance-circle').textContent = savedData.distance + ' km';
+    document.getElementById('duration-circle').textContent = savedData.duration;
+    document.getElementById('steps-circle').textContent = savedData.steps;
+    document.getElementById('pace-circle').textContent = savedData.pace + ' min / km';
 }
 
 // Helper function to retrieve default date (today's date)
@@ -476,4 +526,57 @@ function saveDataForDate(date, data) {
 function retrieveDataForDate(date) {
     const data = localStorage.getItem(date);
     return data ? JSON.parse(data) : null;
+}
+
+const navButton = document.querySelector('.nav-icon-button');
+const navBar = document.getElementById('navBar');
+
+navButton.addEventListener('click', function () {
+    navBar.classList.toggle('active');
+
+    // Check if the navBar is active
+    const isActive = navBar.classList.contains('active');
+
+    // If the screen is smaller than 600px and the navBar is active, remove the transform style
+    if (window.innerWidth <= 600 && isActive) {
+        navBar.style.transform = 'translateX(0)';
+    } else if (window.innerWidth <= 600 && !isActive) {
+        navBar.style.transform = 'translateX(-100%)';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const goalsButton = document.querySelector('.goals-button');
+    const goalsOverlay = document.getElementById('goalsOverlay');
+
+    goalsButton.addEventListener('click', function () {
+        goalsOverlay.classList.add('show');
+    });
+
+    function closeGoalsOverlay() {
+        goalsOverlay.classList.remove('show');
+    }
+
+    // Close the overlay if clicked outside the content
+    goalsOverlay.addEventListener('click', function (e) {
+        if (e.target === goalsOverlay) {
+            closeGoalsOverlay();
+        }
+    });
+
+    // Close the overlay on clicking the close button
+    const closeButton = goalsOverlay.querySelector('.close-btn');
+    closeButton.addEventListener('click', closeGoalsOverlay);
+
+    // Close the overlay on clicking the confirm button
+    const confirmButton = goalsOverlay.querySelector('.confirm-button');
+    confirmButton.addEventListener('click', function () {
+        closeGoalsOverlay();
+    });
+});
+
+  function handleResize() {
+    if (window.performanceChart) {
+        window.performanceChart.resize();
+    }
 }

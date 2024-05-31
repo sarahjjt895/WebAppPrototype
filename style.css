@@ -47,13 +47,6 @@ h1 {
   font-size: 20px;
 }
 
-.Header h2 {
-  margin-left: 10vw;
-  /* Adjust the margin to position the text */
-  font-size: 20px;
-  font-weight: normal;
-}
-
 .options-container {
   display: flex;
   align-items: center;
@@ -239,14 +232,32 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   background-color: #d3d0d0;
-  margin-left: 0;
+  margin-right: -.7vw;
   padding: 10px 20px;
   box-sizing: border-box;
-  max-height: 300px;
-  padding-top: 5vw;
-  padding-bottom: 20%;
+  padding-top: 6vw;
+  transition: height 0.3s ease; /* Smooth transition for height changes */
+}
+
+.Performance-Breakdown h2 {
+  align-items: top;
+position:absolute;
+top: 2.5vw;
+}
+
+/* Adjust the height based on screen width */
+@media (max-width: 1700px) {
+  .Performance-Breakdown {
+    height: auto; /* Allow automatic height adjustment */
+  }
+}
+
+@media (min-width: 1700px) {
+  .Performance-Breakdown {
+    height: 12vw; /* Set a fixed height when flex wrap is not triggered */
+  }
 }
 
 .circle-container {
@@ -270,6 +281,7 @@ h3 {
   border-radius: 50%;
   background-color: #ffffff;
   display: flex;
+  flex-direction: column; /* Stack content vertically */
   justify-content: center;
   align-items: center;
   border: 3px solid #e6d9b6;
@@ -278,14 +290,16 @@ h3 {
   text-align: center;
   font-size: 2vw;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* Use viewport width for responsive font size */
 }
 
 .circle .label {
   font-size: 1vw;
   /* Use viewport width for responsive font size */
-  padding-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 18vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column; 
+position:relative;
 }
 
 .Performance-Overview {
@@ -299,7 +313,12 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 5vw;
+}
+
+.Performance-Overview h2 {
+ text-align: left;
+top: 2.5vw;
 }
 
 /* CSS to style the chart container */
@@ -955,7 +974,6 @@ input:not([type="range"]):focus {
   border: 1px solid #ccc;
   margin-left: 250px;
 }
-
 @media (min-width: 600px) {
   .container {
     grid-template-columns: 1fr 4fr;
@@ -982,12 +1000,18 @@ input:not([type="range"]):focus {
 @media (max-width: 600px) {
   .Nav-Bar {
     transform: translateX(-100%);
+    padding:2vw;
   }
-
+  .Nav-Bar h3 {
+    text-align: center;
+  }
   @media (min-width: 600px) {
     .Nav-Bar {
       transform: translateX(0);
     }
+    .Nav-Bar h3 {
+    text-align: center;
+  }
   }
 }
 
@@ -1002,41 +1026,76 @@ input:not([type="range"]):focus {
   .Performance-Overview {
     height: auto;
     /* Allow the content to determine the height */
-    padding: 20px;
-    max-height: calc(100vh - 200px);
+    padding: 5vw;
+    padding-top: 15vw;
+    max-height: calc(150vh - 200px);
     /* Adjust this value as necessary */
     width: 100%;
     /* Ensure it takes full width of the container */
   }
+   .circle {
+    width: calc(25% - 20px);
+      font-size: 3vw;
+    }
+
+  .Performance-Breakdown h2 {
+    font-size: 15px;
+    padding: 2px;
+    margin-top: 4vw;
+  }
+  .Performance-Breakdown {
+    padding: 5px;
+    margin-top: 5vw;
+    padding-top: 18vw;
+  }
 }
 
 @media (max-width: 1200px) {
   #areaChart {
     width: 100%;
     height: 60vh;
-    /* Adjust the height as needed */
+  }
+  .circle {
+    width: calc(25% - 20px);
+      font-size: 3vw;
+    }
+  .circle .label {
+    margin-top: 2vw;
+  }
+  .Performance-Breakdown h2 {
+    font-size: 15px;
+    padding: 2px;
+    margin-top: 3vw;
+  }
+  .Performance-Breakdown {
+    padding: 5px;
+    margin-top: 1vw;
+    padding-top: 5vw;
+  }
+}
+/* Adjust the height based on screen width */
+@media (max-width: 1700px) {
+  .Performance-Breakdown {
+    height: auto; /* Allow automatic height adjustment */
+  }
+  .circle .label {
+    padding-top: 8vw;
   }
 }
 
-
-
-
-
-
-
-@media (max-width: 1200px) {
-  #areaChart {
-    width: 100%;
-    height: 60vh;
-    /* Adjust the height as needed */
+@media (min-width: 1700px) {
+  .Performance-Breakdown {
+    height: 20vw; /* Set a fixed height when flex wrap is not triggered */
   }
 }
-
 @media (min-width: 1700px) {
   .performance-overview {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
+  }
+  .circle .label {
+    padding-top: 5vw;
   }
 
   #chart-container,
@@ -1056,27 +1115,39 @@ input:not([type="range"]):focus {
   }
 }
 
-@media (max-width: 600px) {
-  .circle {
-    font-size: 3vw;
-  }
-
-  .Performance-Breakdown {
-    padding: 5px;
-    margin-top: 30px;
-  }
-}
-
-
 @media (max-width: 768px) {
   .circle {
     width: calc(25% - 20px);
+  }
+  .Performance-Breakdown h2 {
+    font-size: 15px;
+    padding: 2px;
+    top:5vw;
+   
+  }
+  .Performance-Breakdown {
+    padding: 5px;
+    margin-top: 5vw;
+    padding-top: 3vw;
+  }
+  .Performance-Overview {
+    padding: 5px;
+    margin-top: 5vw;
+    padding-top: 3vw;
   }
 }
 
 @media (max-width: 576px) {
   .circle {
     width: calc(50% - 20px);
+  }
+  .circle label {
+    width: calc(50% - 20px);
+  }
+  .Performance-Breakdown {
+    padding: 5px;
+    margin-top: 1vw;
+    padding-top: 4vw;
   }
 }
 
@@ -1094,5 +1165,24 @@ input:not([type="range"]):focus {
   .circle:nth-child(even) {
     margin-left: 10px;
     /* Add margin to even circles */
+  }
+  .circle .label {
+    font-size: 2vw;
+  }
+  .Performance-Breakdown h2 {
+    font-size: 15px;
+    padding: 2px;
+    margin-top: 10vw;
+  }
+  .Performance-Breakdown {
+    padding: 5px;
+    margin-top: 1vw;
+    padding-top: 15vw;
+  }
+
+  .Performance-Overview {
+    padding: 5px;
+    margin-top: 1vw;
+    padding-top: 15vw;
   }
 }

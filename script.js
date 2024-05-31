@@ -312,6 +312,29 @@ function saveAndPopulate() {
     }));
 }
 
+//function to populate circles when performance date is changed
+function populateCircles(date) {
+    const savedData = retrieveDataForDate(date);
+
+    if (savedData) {
+        document.getElementById('distance-circle').textContent = savedData.distance + ' km';
+        document.getElementById('duration-circle').textContent = savedData.duration;
+        document.getElementById('steps-circle').textContent = savedData.steps;
+        document.getElementById('pace-circle').textContent = savedData.pace + ' min / km';
+
+        document.getElementById('distance-circle').innerHTML += '<div class="label">Distance</div>';
+        document.getElementById('duration-circle').innerHTML += '<div class="label">Duration</div>';
+        document.getElementById('steps-circle').innerHTML += '<div class="label">Steps</div>';
+        document.getElementById('pace-circle').innerHTML += '<div class="label">Pace</div>';
+    } else {
+        document.getElementById('distance-circle').textContent = 'N/A';
+        document.getElementById('duration-circle').textContent = 'N/A';
+        document.getElementById('steps-circle').textContent = 'N/A';
+        document.getElementById('pace-circle').textContent = 'N/A';
+    }
+}
+
+
 // Event listener for the Next button on the overlay
 document.querySelector('.next-button').addEventListener('click', function () {
     // Save data to local storage
@@ -388,14 +411,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Attach event listeners to buttons and input fields
     const submitButton = document.getElementById('submit-button');
-    submitButton.addEventListener('click', populateChart);
+    submitButton.addEventListener('click', function () {
+        const sessionDate = document.getElementById('session-date').value;
+        saveAndPopulate(sessionDate); // Save and populate circles based on session date
+        updateDataBasedOnDate(sessionDate); // Update chart based on session date
+    });
 
-    const dateInput = document.getElementById('performance-date');
-    dateInput.addEventListener('change', updateDataBasedOnDate);
-
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('performance-date');
+        dateInput.addEventListener('change', function () {
+            const selectedDate = dateInput.value;
+            updateDataBasedOnDate(selectedDate);
+        });
+    
+        const defaultDate = getDefaultDate();
+        document.getElementById('performance-date').value = defaultDate;
+        initializeChart(defaultDate);
+        populateCircles(defaultDate);
+    });
+    
 });
-
-
 
 // Function to initialize the chart with data for a specific date
 function initializeChart(date) {
@@ -408,7 +443,7 @@ function initializeChart(date) {
         data: {
             labels: ['Distance', 'Duration', 'Steps', 'Pace'],
             datasets: [{
-                label: 'Performance',
+                label: 'Performance x Goals Percentage',
                 backgroundColor: 'rgba(230, 217, 182, 1)',
                 borderColor: 'rgba(184, 158, 89, 1)',
                 data: dataForDate.map(item => item.value),
@@ -496,6 +531,9 @@ function updateDataBasedOnDate() {
     document.getElementById('duration-circle').textContent = savedData.duration;
     document.getElementById('steps-circle').textContent = savedData.steps;
     document.getElementById('pace-circle').textContent = savedData.pace + ' min / km';
+
+    populateCircles(date);
+    populateChart(date);
 }
 
 // Helper function to retrieve default date (today's date)

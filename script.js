@@ -6,16 +6,16 @@ const data = localStorage.getItem('key');
 
 const performanceBreakdown = document.getElementById('performanceBreakdown');
 
+//function for the option (day, week month) button to change when pressed
 const optionBtns = document.querySelectorAll('.option-btn');
-
 optionBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         optionBtns.forEach(btn => btn.classList.remove('active'));
         btn.classList.add('active');
-        // Add functionality here based on the selected option
     });
 });
 
+// function for the plus button to open the overlay when pressed
 document.addEventListener('DOMContentLoaded', function () {
     const plusButton = document.getElementById('plus-button');
     plusButton.addEventListener('click', openOverlay);
@@ -28,7 +28,7 @@ function openOverlay() {
     overlay.classList.add('show'); // Add the 'show' class
 }
 
-// Get the buttons
+// buttons for manual/ import in the overlay
 const manualBtn = document.getElementById('manual-btn');
 const importBtn = document.getElementById('import-btn');
 
@@ -61,7 +61,7 @@ function isDurationInput(input) {
     return input.id === 'hours' || input.id === 'minutes' || input.id === 'seconds';
 }
 
-// functions
+// functions for the duration input field
 const validInput = (val) => {
     // prevent user from inserting non-digits
     return val.replace(/[^0-9]+/g, "");
@@ -177,12 +177,12 @@ secondsInput.addEventListener('input', calculatePace);
 distanceInput.addEventListener('input', calculatePace);
 
 //complete all fields message
-
 document.addEventListener('DOMContentLoaded', function () {
     const nextButton = document.querySelector('.next-button');
     nextButton.addEventListener('click', validateFieldsAndOpenMoodOverlay);
 });
 
+// check all fields have been completed, if so open the mood overlay (next screen)
 function validateFieldsAndOpenMoodOverlay() {
     // Validate input fields excluding the date selector
     const inputs = document.querySelectorAll('input:not(#performance-date)');
@@ -205,15 +205,16 @@ function validateFieldsAndOpenMoodOverlay() {
 }
 overlay.addEventListener('click', (e) => {
     if (e.target === overlay) {
-      closeOverlay();
+        closeOverlay();
     }
-  });
+});
 
+//next button pressed function
 document.addEventListener('DOMContentLoaded', function () {
     const nextButton = document.querySelector('.next-button');
     nextButton.addEventListener('click', openMoodOverlay);
 });
-
+//open the mood overlay
 function openMoodOverlay() {
     const inputs = document.querySelectorAll('input');
     let isValid = true;
@@ -296,6 +297,7 @@ document.querySelectorAll('select, #energy-slider').forEach(element => {
     element.addEventListener('change', calculateAverage);
 });
 
+//function to save the data from the input fields, then populate the circles once submitted
 function saveAndPopulate() {
     // Retrieve data from input fields
     const distance = document.getElementById('distance').value;
@@ -311,29 +313,6 @@ function saveAndPopulate() {
         pace: pace
     }));
 }
-
-//function to populate circles when performance date is changed
-function populateCircles(date) {
-    const savedData = retrieveDataForDate(date);
-
-    if (savedData) {
-        document.getElementById('distance-circle').textContent = savedData.distance + ' km';
-        document.getElementById('duration-circle').textContent = savedData.duration;
-        document.getElementById('steps-circle').textContent = savedData.steps;
-        document.getElementById('pace-circle').textContent = savedData.pace + ' min / km';
-
-        document.getElementById('distance-circle').innerHTML += '<div class="label">Distance</div>';
-        document.getElementById('duration-circle').innerHTML += '<div class="label">Duration</div>';
-        document.getElementById('steps-circle').innerHTML += '<div class="label">Steps</div>';
-        document.getElementById('pace-circle').innerHTML += '<div class="label">Pace</div>';
-    } else {
-        document.getElementById('distance-circle').textContent = 'N/A';
-        document.getElementById('duration-circle').textContent = 'N/A';
-        document.getElementById('steps-circle').textContent = 'N/A';
-        document.getElementById('pace-circle').textContent = 'N/A';
-    }
-}
-
 
 // Event listener for the Next button on the overlay
 document.querySelector('.next-button').addEventListener('click', function () {
@@ -397,9 +376,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listener for date change
     document.getElementById('performance-date').addEventListener('change', updateDataBasedOnDate);
 
-    // Populate chart with data for the default date
+    // Populate chart with data for the default date and close overlay
     populateChart();
-
     closeOverlay();
 });
 
@@ -423,16 +401,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectedDate = dateInput.value;
             updateDataBasedOnDate(selectedDate);
         });
-    
+
         const defaultDate = getDefaultDate();
         document.getElementById('performance-date').value = defaultDate;
         initializeChart(defaultDate);
         populateCircles(defaultDate);
     });
-    
+
 });
 
-// Function to initialize the chart with data for a specific date
+// Function to initialize the chart with data for a specific date (selected from the performance-date field)
 function initializeChart(date) {
     // Retrieve data for the given date or use default data if not available
     const dataForDate = retrieveDataForDate(date) || getDefaultChartData();
@@ -525,14 +503,6 @@ function updateDataBasedOnDate() {
     chart.data.datasets[0].data = dataForDate.map(item => item.value);
     chart.update();
 
-   
-    // Populate circles with the saved data
-    document.getElementById('distance-circle').textContent = savedData.distance + ' km';
-    document.getElementById('duration-circle').textContent = savedData.duration;
-    document.getElementById('steps-circle').textContent = savedData.steps;
-    document.getElementById('pace-circle').textContent = savedData.pace + ' min / km';
-
-    populateCircles(date);
     populateChart(date);
 }
 
@@ -573,8 +543,7 @@ navButton.addEventListener('click', function () {
     navBar.classList.toggle('active');
 
     // Check if the navBar is active
-    const isActive = navBar.classList.contains('active');
-
+    const isActive = navBar.classList.contains('active')
     // If the screen is smaller than 600px and the navBar is active, remove the transform style
     if (window.innerWidth <= 600 && isActive) {
         navBar.style.transform = 'translateX(0)';
@@ -583,6 +552,7 @@ navButton.addEventListener('click', function () {
     }
 });
 
+//show the goals overlay when the goals button is selected
 document.addEventListener('DOMContentLoaded', function () {
     const goalsButton = document.querySelector('.goals-button');
     const goalsOverlay = document.getElementById('goalsOverlay');
@@ -613,7 +583,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-  function handleResize() {
+function handleResize() {
     if (window.performanceChart) {
         window.performanceChart.resize();
     }

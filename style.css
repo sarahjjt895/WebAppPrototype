@@ -1,3 +1,4 @@
+/*Grid container style for the entire screen*/
 .container {
   display: grid;
   grid-template-areas:
@@ -6,11 +7,10 @@
     "Performance-Breakdown"
     "Performance-Overview";
   grid-template-columns: 1fr;
-  /* Adjust grid columns for smaller screens */
   grid-template-rows: auto;
-  /* Adjust grid rows for smaller screens */
 }
 
+/* Header styles*/
 .Header {
   grid-area: Header;
   width: 100%;
@@ -28,6 +28,7 @@
   box-sizing: border-box;
 }
 
+/*styling for multiple fonts*/
 p {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -43,21 +44,17 @@ h4 {
 
 h1 {
   margin-left: 5px;
-  /* Adjust the margin to position the text */
   font-size: 20px;
 }
 
+/* styling for the d/w/m container within the header*/
 .options-container {
   display: flex;
   align-items: center;
-  /* Align items to the start of the container (below h3 text) */
   margin-left: auto;
-  /* Push the container to the right */
   margin-right: 10px;
   border-radius: 20px;
-  /* Adjust the border-radius for curved corners */
   overflow: hidden;
-  /* Ensure the overflow is hidden to hide the corners of buttons */
   color: #fff;
 }
 
@@ -78,10 +75,12 @@ h1 {
 }
 
 .option-btn:hover {
+    /* Change the background color on hover */
   background-color: #cccccc;
-  /* Change the background color on hover */
+
 }
 
+/* Nav bar styling*/
 .Nav-Bar {
   grid-area: Nav-Bar;
   height: 100%;
@@ -89,8 +88,6 @@ h1 {
   min-width: 150px;
   background-color: #333;
   position: fixed;
-
-  /* Adjust for header height */
   left: 0;
   display: flex;
   flex-direction: column;
@@ -98,8 +95,8 @@ h1 {
   align-items: center;
   transition: transform 0.3s ease-in-out;
   transform: translateX(-100%);
+   /* Ensure it stays above other content */
   z-index: 999;
-  /* Ensure it is above other content */
 }
 
 .nav-icon-button {
@@ -111,36 +108,27 @@ h1 {
   align-items: center;
   justify-content: center;
   width: auto;
-  /* Ensure width is determined by content */
   height: auto;
-  /* Ensure height is determined by content */
   margin: 0;
-  /* Remove any default margin */
   max-width: 40px;
-  /* Set a maximum width if needed */
 }
 
+/*style for burger menu button*/ 
 .nav-icon-button img {
   width: 20px;
-  /* Adjust the width of the image */
   height: 20px;
-  /* Adjust the height of the image */
 }
 
+/*style for burger menu*/ 
 .Nav-Bar img {
   width: 150px;
-  /* Adjust the width of the image */
   height: 150px;
-  /* Adjust the height of the image */
   margin-top: 70px;
-  /* Adjust the margin from the top of the nav bar */
 }
 
 .Nav-Bar h2 {
   color: white;
-  /* Change the text color as needed */
   margin-top: 175px;
-  /* Adjust the margin to create space between the image and text */
   position: fixed;
   display: flex;
   font-size: 20px;
@@ -149,63 +137,45 @@ h1 {
 
 .Nav-Bar p {
   color: white;
-  /* Change the text color as needed */
   font-size: 20px;
 }
 
+  /* Nav bar transition/animation */
 .Nav-Bar {
   transform: translateX(0);
   transition: transform 0.3s ease-in-out;
-  /* Smooth transition */
 }
 
 .Nav-Bar.active {
   transform: translateX(0);
 }
 
+/*styling for the goals button*/
 .goals-button {
   position: relative;
   display: flex;
   align-items: center;
-  /* Center items vertically */
   justify-content: center;
-  /* Center items horizontally */
   width: 120px;
-  /* Adjust the width of the button */
   height: 40px;
-  /* Set the height of the button */
   border-radius: 20px;
-  /* Adjust the border radius to create curved corners */
   background-color: #fff;
-  /* Change the background color of the button */
   color: #333;
-  /* Change the text color of the button */
   border: 2px solid #333;
-  /* Add a border with color */
   cursor: pointer;
-  /* Add cursor pointer on hover */
   font-size: 18px;
-  /* Adjust the font size */
   line-height: 1;
-  /* Set line-height to ensure no extra space inside the button */
   padding: 0;
-  /* Remove any padding */
   overflow: hidden;
-  /* Prevent content from overflowing */
   white-space: nowrap;
-  /* Prevent text from wrapping */
   box-sizing: border-box;
-  /* Include border in the element's total width and height */
 }
 
-
-
+  /* Icon within the goals button */
 .slider-icon {
   position: relative;
-  /* Automatically adjust the height based on the width */
   margin-left: 15px;
   vertical-align: middle;
-  /* Align the icon vertically with the text */
   max-width: 20%;
   max-height: 45%;
   margin-bottom: 70px;
@@ -213,9 +183,7 @@ h1 {
 
 .goals-button span {
   flex: 1;
-  /* Allow the text to fill the available space */
   text-align: center;
-  /* Center the text horizontally */
 }
 
 h3 {
@@ -237,27 +205,15 @@ h3 {
   margin-right: -.7vw;
   padding: 10px 20px;
   box-sizing: border-box;
-  padding-top: 6vw;
-  transition: height 0.3s ease; /* Smooth transition for height changes */
+  padding-top: 7vw;
+  transition: height 0.3s ease;
+  /* Smooth transition for height changes */
 }
 
 .Performance-Breakdown h2 {
   align-items: top;
-position:absolute;
-top: 2.5vw;
-}
-
-/* Adjust the height based on screen width */
-@media (max-width: 1700px) {
-  .Performance-Breakdown {
-    height: auto; /* Allow automatic height adjustment */
-  }
-}
-
-@media (min-width: 1700px) {
-  .Performance-Breakdown {
-    height: 12vw; /* Set a fixed height when flex wrap is not triggered */
-  }
+  position: absolute;
+  top: 4vw;
 }
 
 .circle-container {
@@ -265,15 +221,12 @@ top: 2.5vw;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  /* Ensure full width of parent container */
 }
 
 /* Circle styles */
 .circle {
   flex: 1 0 12vw;
-  /* Flex-grow, flex-shrink, and flex-basis */
   width: calc(20% - 20px);
-  /* Adjust circle size */
   width: 12vw;
   height: 12vw;
   max-width: 12vw;
@@ -281,33 +234,33 @@ top: 2.5vw;
   border-radius: 50%;
   background-color: #ffffff;
   display: flex;
-  flex-direction: column; /* Stack content vertically */
+  flex-direction: column;
+  /* Stack content vertically */
   justify-content: center;
   align-items: center;
   border: 3px solid #e6d9b6;
   margin: 10px;
-  /* Adjust margin for spacing */
   text-align: center;
+  position: relative;
   font-size: 2vw;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .circle .label {
   font-size: 1vw;
-  /* Use viewport width for responsive font size */
-  margin-bottom: 18vw;
+  margin-bottom: 5vw;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column; 
-position:relative;
+  flex-direction: column;
+  position: absolute;
 }
 
+/* Styling for the content in the performance overview container*/
 .Performance-Overview {
   grid-area: Performance-Overview;
   background-color: #ffffff;
-  height: 80vh;
+  height: 50vw;
   width: 100%;
-  /* Ensure it takes full width of the container */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -317,25 +270,24 @@ position:relative;
 }
 
 .Performance-Overview h2 {
- text-align: left;
-top: 2.5vw;
+  text-align: left;
+  top: 5vw;
 }
 
 /* CSS to style the chart container */
 #areaChart {
   width: 100%;
-  height: 100%;
+  height: 40vw;
   max-width: 1000px;
-  /* Optional: Limit the maximum width of the chart */
   margin: auto;
   position: relative;
-  /* Ensure the position is relative for correct resizing */
+  padding-bottom: 5vw;
+  /* position is relative for correct resizing */
 }
 
 #chart-container {
   width: 80%;
   height: 350px;
-  /* Set a fixed height */
   margin: auto;
 }
 
@@ -348,14 +300,11 @@ canvas {
 .date-selection {
   width: 100%;
   max-width: 400px;
-  /* Adjust max-width as needed */
   margin-bottom: 10px;
-  /* Reduce margin for smaller gap */
 }
 
 .date-selection input[type="date"] {
   width: 100%;
-  /* Set the width to 100% to fill the container */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 8px;
   font-size: 16px;
@@ -363,7 +312,6 @@ canvas {
   border: 1px solid #ccc;
   box-sizing: border-box;
   text-align: center;
-  /* Center the text within the input */
 }
 
 .plus-button {
@@ -371,27 +319,19 @@ canvas {
   bottom: 20px;
   right: 20px;
   width: 60px;
-  /* Adjust size of the circle */
   height: 60px;
-  /* Adjust size of the circle */
   background-color: #333;
-  /* Background color of the circle */
   color: #ffffff;
-  /* Text color */
   border-radius: 50%;
-  /* Make it a circle */
   font-size: 40px;
-  /* Adjust size of the plus icon */
   text-align: center;
-  /* Center the text */
   line-height: 50px;
-  /* Center the text vertically */
   cursor: pointer;
-  /* Add cursor pointer on hover */
+  /* Ensure button remains above other content*/
   z-index: 9999;
-  /* Ensure it is above other content */
 }
 
+/* Log a session overlay screen styling*/
 .overlay {
   display: none;
   /* Hide overlay by default */
@@ -401,10 +341,9 @@ canvas {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  /* Semi-transparent background */
   z-index: 999;
+    /* Ensure it is above other content but below the plus button */
   opacity: 0;
-  /* Ensure it is above other content but below the plus button */
   transition: opacity 0.3s ease;
   /* Add transition effect */
   animation: 3s;
@@ -419,85 +358,61 @@ canvas {
 
 .overlay-content {
   position: absolute;
-  /* Absolute positioning to center the content */
   top: 50%;
-  /* Center vertically */
   left: 50%;
-  /* Center horizontally */
   transform: translate(-50%, -50%);
-  /* Center the content both horizontally and vertically */
   max-width: 100%;
-  /* Set maximum width of the overlay content */
   max-height: 100%;
-  /* Set maximum height of the overlay content */
-
   background-color: #fff;
-  /* Background color of the overlay content */
   padding: 30px;
-  /* Padding for the content */
   border-radius: 10px;
-  /* Rounded corners */
 }
 
 .overlay-content label {
   display: inline-block;
   width: 50px;
-
 }
 
 .overlay-content input[type="date"] {
   display: inline-block;
   width: calc(100% - 60px);
-  /* Subtracting the width of the label */
 }
 
-
-
+/*date input styling*/
 #session-date {
   margin-top: 20px;
   width: 160px;
-  /* Adjust width as needed */
   padding: 8px 10px;
-  /* Adjust padding as needed */
   border: 1px solid #ccc;
-  /* Add border */
   border-radius: 5px;
-  /* Add border radius */
   font-size: 16px;
-  /* Adjust font size */
   box-sizing: border-box;
-  /* Include padding and border in element's total width and height */
   font-size: 20px;
 }
 
+  /* Remove default focus outline */
 #session-date:focus {
   outline: none;
-  /* Remove default focus outline */
 }
 
 .inputdate-container,
 .inputtime-container {
   margin-bottom: 10px;
-  /* Add a small gap between date and time inputs */
   text-align: left;
-  /* Align inputs to the left */
 }
 
-
+/* date & time input styling*/
 .inputdate-container input[type="date"],
 .inputtime-container input[type="time"] {
   width: 160px;
-  /* Adjust the width of the inputs as needed */
   margin-left: 80px;
   border: 1px solid #ccc;
-  /* Add border */
   font-family: sans-serif;
   font-size: 20px;
   padding: 8px 10px;
 }
 
-
-
+/* distance input styling*/
 .input-distance-container {
   display: flex;
   align-items: center;
@@ -524,11 +439,10 @@ canvas {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Duration container styling*/
 :root {
   --inactive: #ccc;
-  ;
   --active: #686868;
-  ;
 }
 
 body {
@@ -539,13 +453,11 @@ body {
   width: 70%;
   height: 50px;
   margin: 0 auto;
-  /*   background: pink; */
   position: relative;
   transform: scale(1);
   margin-left: 134px;
-  margin-top: -30px;
+  margin-top: -20px;
   padding-bottom: 25px;
-
 }
 
 #time_input {
@@ -554,7 +466,6 @@ body {
   color: #4d4d4d;
   display: flex;
   align-items: center;
-
 }
 
 input {
@@ -618,6 +529,7 @@ input.invalid:focus+.label {
   color: red;
 }
 
+/*style for error message when input not correct*/
 #error {
   width: 135px;
   position: relative;
@@ -627,6 +539,12 @@ input.invalid:focus+.label {
   margin-left: 134px;
 }
 
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+/* styling for steps input container*/
 .input-steps-container {
   display: flex;
   align-items: center;
@@ -645,7 +563,6 @@ input.invalid:focus+.label {
   border-radius: 3px;
   font-size: 20px;
   margin-left: 65px;
-
 }
 
 .input-steps-container span {
@@ -653,7 +570,7 @@ input.invalid:focus+.label {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
+/*styling for automatic pace caluclator container*/
 .input-pace-container {
   display: flex;
   align-items: center;
@@ -673,6 +590,7 @@ input.invalid:focus+.label {
   font-size: 20px;
   margin-left: 74px;
   margin-right: 10px;
+  border: 1px solid #ccc;
 }
 
 .input-pace-container span {
@@ -680,47 +598,37 @@ input.invalid:focus+.label {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
+/*overlay text styling*/
 .overlay-content h2 {
   color: black;
-  /* Black color for h2 */
   text-align: center;
 }
 
 .overlay-content h3 {
   color: #949493;
-  /* Light color for h3 */
   font-size: 25px;
-  /* Font size for h3 */
   font-weight: bold;
-  /* Bold font weight for h3 */
   padding-left: 15px;
 }
 
 .overlay-content p {
   text-align: center;
-  /* Center aligns paragraphs */
   color: #000000;
-  /* Black color for paragraphs */
 }
 
+/* styling to ensure elements within overlay are aligned*/
 .inline-block {
   display: inline-block;
-  /* Display elements inline */
   margin: 0;
-  /* Removes default margin */
   margin-bottom: 10px;
-  /* Adds bottom margin for spacing */
 }
 
 .inline-block-container {
   display: flex;
-  /* Displays container as flex */
   flex-direction: column;
-  /* Stacks elements vertically */
 }
 
-
+/* close (x) button styling*/
 .close-btn {
   position: absolute;
   top: 10px;
@@ -738,7 +646,6 @@ input.invalid:focus+.label {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-  /* Adjust spacing as needed */
   position: relative;
 }
 
@@ -746,18 +653,14 @@ input.invalid:focus+.label {
   border: none;
   background-color: transparent;
   color: #000;
-  /* Button text color */
   font-size: 16px;
   text-decoration: none;
-  /* Remove default underline */
   cursor: pointer;
   margin: 0 20px;
-
 }
 
 .overlay-button:hover {
   text-decoration: none;
-  /* Remove underline on hover */
 }
 
 .button-container::before,
@@ -765,166 +668,110 @@ input.invalid:focus+.label {
   content: "";
   position: absolute;
   width: 100%;
-  /* Full width */
   height: 1px;
   background-color: #000;
-  /* Line color */
 }
 
 .button-container::before {
   top: -10px;
-  /* Adjust position above text */
 }
 
 .button-container::after {
   bottom: -10px;
-  /* Adjust position below text */
 }
 
 .overlay-button.active {
   font-weight: bold;
 }
 
+/* styling for the next button in the overlay*/
 .next-button {
   display: block;
-  /* Ensure the button takes up the full width */
   margin: 0 auto;
-  /* Center the button horizontally */
   width: 120px;
-  /* Adjust the width of the button */
   height: 40px;
-  /* Adjust the height of the button */
   border-radius: 20px;
-  /* Adjust the border radius to create curved corners */
   background-color: #e6d9b6;
-  /* Change the background color of the button */
   color: #333;
-  /* Change the text color of the button */
   border: 2px solid #333;
-  /* Add a border with color */
   cursor: pointer;
-  /* Add cursor pointer on hover */
   font-size: 18px;
   margin-top: 10px;
 }
 
-
+/* styling for the confirm button in the goals overlay (nav bar)*/
 .confirm-button {
   display: block;
-  /* Ensure the button takes up the full width */
   margin: 0 auto;
-  /* Center the button horizontally */
   width: 120px;
-  /* Adjust the width of the button */
   height: 40px;
-  /* Adjust the height of the button */
   border-radius: 20px;
-  /* Adjust the border radius to create curved corners */
   background-color: #e6d9b6;
-  /* Change the background color of the button */
   color: #333;
-  /* Change the text color of the button */
   border: 2px solid #333;
-  /* Add a border with color */
   cursor: pointer;
-  /* Add cursor pointer on hover */
   font-size: 18px;
   margin-top: 10px;
 }
 
-.error-message {
-  color: red;
-  text-align: center;
-}
-
+/* Styling for the mood percentage bar */
 .percentage-bar-container {
   width: 100%;
   height: 30px;
-  /* Adjust height as needed */
   background-color: #f0f0f0;
-  /* Background color of the container */
   border-radius: 5px;
-  /* Rounded corners */
   margin-top: 10px;
-  /* Adjust spacing as needed */
-  display: inline-block;
-  position: relative;
-  /* Ensure relative positioning */
+  display: flex; 
   align-items: center;
-  /* Center items vertically */
-  justify-content: center;
-  /* Center items horizontally */
+  position: relative;
 }
 
 .percentage-bar {
-  width: 50%;
-  /* Set initial width to 50% */
+  width: 50%; 
   height: 100%;
   background-color: #4CAF50;
-  /* Green color for the bar */
   border-radius: 5px;
-  /* Rounded corners */
   transition: width 0.5s ease-in-out;
-  /* Smooth transition effect */
-  display: inline-block;
-
 }
 
 .percentage-text {
   position: absolute;
   left: 50%;
-  /* Move to the center horizontally */
   transform: translateX(-50%);
-  /* Adjust for center alignment */
   bottom: 0;
-  /* Align to the bottom of the container */
   font-size: 16px;
-  /* Adjust font size as needed */
   color: #000;
-  /* Adjust color as needed */
-  align-items: center;
-  /* Center items vertically */
   padding-bottom: 4px;
 }
 
 
+/*styles for the dropdown containers in the mood overlay*/
 .dropdown-container {
   display: flex;
   align-items: center;
   margin-top: 20px;
-  /* Adjust spacing as needed */
 }
 
 .dropdown-container label {
   margin-right: 40px;
-  /* Adjust spacing between label and select */
 }
 
 .dropdown-container select {
   width: 150px;
-  /* Adjust width as needed */
   height: 30px;
 }
 
+/* styling for the submit button in the mood overlay */
 .submit-button {
   display: block;
-  /* Ensure the button takes up the full width */
   margin: 0 auto;
-  /* Center the button horizontally */
   width: 120px;
-  /* Adjust the width of the button */
   height: 40px;
-  /* Adjust the height of the button */
   border-radius: 20px;
-  /* Adjust the border radius to create curved corners */
   background-color: #e6d9b6;
-  /* Change the background color of the button */
   color: #333;
-  /* Change the text color of the button */
   border: 2px solid #333;
-  /* Add a border with color */
   cursor: pointer;
-  /* Add cursor pointer on hover */
   font-size: 18px;
   margin-top: 20px;
 }
@@ -934,6 +781,7 @@ input:not([type="range"]):focus {
   outline: 3px solid var(--active);
 }
 
+/* styles for the energy input slider*/
 .slider-container {
   display: flex;
   align-items: center;
@@ -941,7 +789,6 @@ input:not([type="range"]):focus {
 
 #energy-slider {
   width: 200px;
-  /* Adjust width as needed */
   margin-left: 10px;
 }
 
@@ -949,7 +796,7 @@ input:not([type="range"]):focus {
   margin-left: 10px;
 }
 
-
+/*container for date selector*/
 #container {
   margin: 20px;
   width: 200px;
@@ -974,6 +821,9 @@ input:not([type="range"]):focus {
   border: 1px solid #ccc;
   margin-left: 250px;
 }
+
+
+/* styles for responsive screen sizing*/
 @media (min-width: 600px) {
   .container {
     grid-template-columns: 1fr 4fr;
@@ -1000,18 +850,21 @@ input:not([type="range"]):focus {
 @media (max-width: 600px) {
   .Nav-Bar {
     transform: translateX(-100%);
-    padding:2vw;
+    padding: 2vw;
   }
+
   .Nav-Bar h3 {
     text-align: center;
   }
+
   @media (min-width: 600px) {
     .Nav-Bar {
       transform: translateX(0);
     }
+
     .Nav-Bar h3 {
-    text-align: center;
-  }
+      text-align: center;
+    }
   }
 }
 
@@ -1022,167 +875,76 @@ input:not([type="range"]):focus {
   }
 }
 
-@media (max-width: 600px) {
-  .Performance-Overview {
-    height: auto;
-    /* Allow the content to determine the height */
-    padding: 5vw;
-    padding-top: 15vw;
-    max-height: calc(150vh - 200px);
-    /* Adjust this value as necessary */
-    width: 100%;
-    /* Ensure it takes full width of the container */
-  }
-   .circle {
-    width: calc(25% - 20px);
-      font-size: 3vw;
-    }
-
-  .Performance-Breakdown h2 {
-    font-size: 15px;
-    padding: 2px;
-    margin-top: 4vw;
-  }
-  .Performance-Breakdown {
-    padding: 5px;
-    margin-top: 5vw;
-    padding-top: 18vw;
-  }
-}
-
 @media (max-width: 1200px) {
   #areaChart {
     width: 100%;
     height: 60vh;
   }
-  .circle {
-    width: calc(25% - 20px);
-      font-size: 3vw;
-    }
-  .circle .label {
-    margin-top: 2vw;
-  }
+}
+
+@media (max-width: 1200px) {
   .Performance-Breakdown h2 {
-    font-size: 15px;
-    padding: 2px;
-    margin-top: 3vw;
-  }
-  .Performance-Breakdown {
-    padding: 5px;
-    margin-top: 1vw;
-    padding-top: 5vw;
-  }
-}
-/* Adjust the height based on screen width */
-@media (max-width: 1700px) {
-  .Performance-Breakdown {
-    height: auto; /* Allow automatic height adjustment */
-  }
-  .circle .label {
-    padding-top: 8vw;
-  }
-}
-
-@media (min-width: 1700px) {
-  .Performance-Breakdown {
-    height: 20vw; /* Set a fixed height when flex wrap is not triggered */
-  }
-}
-@media (min-width: 1700px) {
-  .performance-overview {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-  .circle .label {
-    padding-top: 5vw;
+    font-size: 2.5vw;
+    margin-bottom: 3vw;
   }
 
-  #chart-container,
-  .circles-container {
-    width: 45%;
-  }
-
-  .circles-container {
-    flex-direction: column;
-    align-items: center;
+  .Performance-Breakdown {
+    margin-bottom: 3vw;
   }
 }
 
 @media (max-width: 900px) {
-  .circle {
-    font-size: 3vw;
+  .Performance-Breakdown {
+    padding-top: 10vw;
+    margin-bottom: 3vw;
   }
-}
 
-@media (max-width: 768px) {
-  .circle {
-    width: calc(25% - 20px);
-  }
   .Performance-Breakdown h2 {
-    font-size: 15px;
-    padding: 2px;
-    top:5vw;
-   
-  }
-  .Performance-Breakdown {
-    padding: 5px;
-    margin-top: 5vw;
-    padding-top: 3vw;
-  }
-  .Performance-Overview {
-    padding: 5px;
-    margin-top: 5vw;
-    padding-top: 3vw;
+    font-size: 3vw;
+    margin-bottom: 2vw;
+    padding-top: 2vw;
   }
 }
 
-@media (max-width: 576px) {
-  .circle {
-    width: calc(50% - 20px);
-  }
-  .circle label {
-    width: calc(50% - 20px);
-  }
+@media (max-width: 600px) {
   .Performance-Breakdown {
-    padding: 5px;
-    margin-top: 1vw;
-    padding-top: 4vw;
+    padding-top: 15vw;
   }
-}
 
-@media (max-width: 480px) {
+  .Performance-Breakdown h2 {
+    font-size: 4vw;
+    margin-bottom: 1vw;
+    padding-top: 6vw;
+  }
+
   .circle {
-    width: calc(100% - 20px);
-    /* Full width for small screens */
+    font-size: 4vw;
   }
 
-  .circle:nth-child(odd) {
-    margin-right: 10px;
-    /* Add margin to odd circles */
-  }
-
-  .circle:nth-child(even) {
-    margin-left: 10px;
-    /* Add margin to even circles */
-  }
   .circle .label {
     font-size: 2vw;
   }
-  .Performance-Breakdown h2 {
-    font-size: 15px;
-    padding: 2px;
-    margin-top: 10vw;
-  }
-  .Performance-Breakdown {
-    padding: 5px;
-    margin-top: 1vw;
-    padding-top: 15vw;
+
+  .circle .value {
+    font-size: 4vw;
   }
 
   .Performance-Overview {
-    padding: 5px;
-    margin-top: 1vw;
-    padding-top: 15vw;
+    height: auto;
+    padding: 5vw;
+    margin-top: 5vw;
+    max-height: 60vh;
+    width: 100%;
+  }
+
+  #chart-container {
+    height: 20vh;
+    max-height: 20vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .Performance-Overview {
+    margin-top: 8vw;
   }
 }

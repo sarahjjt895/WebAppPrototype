@@ -1,5 +1,7 @@
 # DOCUMENTATION
 
+Link to GitHub: https://github.com/sarahjjt895/WebAppPrototype
+
 ## RATIONALE
 * Tracking website for runners, designed to track their daily excercise and display progress and target performance.
 * Responsive design for both desktop and mobile use.
@@ -44,6 +46,7 @@ Slider Icons – Free Vector Download, PNG, SVG, GIF. (n.d.). Icons8.Ru. https:/
 Nav Icons, Logos, Symbols – Free Download PNG, SVG. (n.d.). Icons8. Retrieved May 26, 2024, from https://icons8.com/icons/set/nav 
 
 ChatGPT OpenAI. (2023). ChatGPT (Feb 13 version) [Large language model]. https://chat.openai.com
+
 ## Prompts:
 * How to Create a line graph chart using HTML, JS & CSS.
 * I want to move the chart and date-selection up, how can I do this?

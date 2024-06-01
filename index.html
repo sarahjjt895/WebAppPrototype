@@ -1,98 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RunWise Fitness Tracker</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- Header section with placeholder w/d/m container -->
+  <div class="Header">
+    <button class="nav-icon-button">
+      <img class="nav-icon" src="Nav-Icon.png" alt="nav-Icon">
+    </button>
+    <h1>RunWise</h1>
+    <div class="options-container">
+      <button id="day-btn" class="option-btn active">Day</button>
+      <button id="week-btn" class="option-btn">Week</button>
+      <button id="month-btn" class="option-btn">Month</button>
+    </div>
+  </div>
+
+  <!-- Nav bar section with user profile, user goals button and placeholder tabs -->
   <div class="container">
     <div class="Nav-Bar" id="navBar">
-        <img src="usericon.png" alt="User-Icon">
-        <h3>Mark Jones</h3>
-        <button class="goals-button">
-            <img class="slider-icon" src="slider-icon.png" alt="slider-Icon">
-            <span>Goals</span>
-        </button>
-        <p> Home</p>
-        <p> Statistics</p>
-        <p> Training</p>
-        <p> Notifications</p>
-        <p> Settings</p>
-        <p> Logout</p>
-    </div>
-
-    
-<!-- Overlay for Goals -->
-<div class="overlay" id="goalsOverlay">
-  <div class="overlay-content">
-      <h2>Daily Goals</h2>
-      <div class="inline-block-container">
-        <div>
-          <p class="inline-block">Distance</p>
-          <h3 class="inline-block">15km</h3>
-        </div>
-      
-        <div>
-          <p class="inline-block">Duration</p>
-          <h3 class="inline-block">2 hours</h3>
-        </div>
-      
-        <div>
-          <p class="inline-block">Steps</p>
-          <h3 class="inline-block">20,000</h3>
-        </div>
-      
-        <div>
-          <p class="inline-block">Pace</p>
-          <h3 class="inline-block">6.0 min/km</h3>
-        </div>
-      </div>
-      <button class="confirm-button">Confirm</button>
-      <div class="goals-content">
-          <!-- Include your goals content here -->
-      </div>
-      <button class="close-btn" onclick="closeGoalsOverlay()">X</button>
-  </div>
-</div>
-
-    <div class="Header">
-      <!-- Nav icon button -->
-      <button class="nav-icon-button">
-        <img class="nav-icon" src="Nav-Icon.png" alt="nav-Icon">
+      <img src="usericon.png" alt="User-Icon">
+      <h3>Mark Jones</h3>
+      <button class="goals-button">
+        <img class="slider-icon" src="slider-icon.png" alt="slider-Icon">
+        <span>Goals</span>
       </button>
-      <h1>RunWise</h1>
-      <div class="options-container">
-          <button id="day-btn" class="option-btn active">Day</button>
-          <button id="week-btn" class="option-btn">Week</button>
-          <button id="month-btn" class="option-btn">Month</button>
-        </div>
+      <p> Home</p>
+      <p> Statistics</p>
+      <p> Training</p>
+      <p> Notifications</p>
+      <p> Settings</p>
+      <p> Logout</p>
     </div>
+
+    <!-- Overlay after selecting goals button displaying placeholder goals defined by user-->
+    <div class="overlay" id="goalsOverlay">
+      <div class="overlay-content">
+        <h2>Daily Goals</h2>
+        <div class="inline-block-container">
+          <div>
+            <p class="inline-block">Distance</p>
+            <h3 class="inline-block">15km</h3>
+          </div>
+
+          <div>
+            <p class="inline-block">Duration</p>
+            <h3 class="inline-block">2 hours</h3>
+          </div>
+
+          <div>
+            <p class="inline-block">Steps</p>
+            <h3 class="inline-block">20,000</h3>
+          </div>
+
+          <div>
+            <p class="inline-block">Pace</p>
+            <h3 class="inline-block">6.0 min/km</h3>
+          </div>
+        </div>
+        <button class="confirm-button">Confirm</button>
+        <div class="goals-content">
+        </div>
+        <button class="close-btn" onclick="closeGoalsOverlay()">X</button>
+      </div>
+    </div>
+
+    <!-- Performance breakdown section with circles and detail view of stats -->
     <div class="Performance-Breakdown" id="performanceBreakdown">
       <h2>Todays Performance</h2>
-        <div class="circle" id="distance-circle">
-            <div class="label">Distance</div>
-            <div class="value" id="distance-value"></div>
-        </div>
-        <div class="circle" id="duration-circle">
-            <div class="label">Duration</div>
-            <div class="value" id="duration-value"></div>
-        </div>
-        <div class="circle" id="steps-circle">
-            <div class="label">Steps</div>
-            <div class="value" id="steps-value"></div>
-        </div>
-        <div class="circle" id="pace-circle">
-            <div class="label">Pace</div>
-            <div class="value" id="pace-value"></div>
-        </div>
-        <div class="circle" id="mood-circle">
-            <div class="label">Mood</div>
-            <div class="value" id="mood-value"></div>
-        </div>
+      <div class="circle" id="distance-circle">
+        <div class="label">Distance</div>
+        <div class="value" id="distance-value"></div>
+      </div>
+      <div class="circle" id="duration-circle">
+        <div class="label">Duration</div>
+        <div class="value" id="duration-value"></div>
+      </div>
+      <div class="circle" id="steps-circle">
+        <div class="label">Steps</div>
+        <div class="value" id="steps-value"></div>
+      </div>
+      <div class="circle" id="pace-circle">
+        <div class="label">Pace</div>
+        <div class="value" id="pace-value"></div>
+      </div>
+      <div class="circle" id="mood-circle">
+        <div class="label">Mood</div>
+        <div class="value" id="mood-value"></div>
+      </div>
     </div>
-    <div class="Performance-Overview"id="performanceOverview">
+
+    <!-- Performance overview with date selector and chart showing overall stats & percentage vs goals-->
+    <div class="Performance-Overview" id="performanceOverview">
       <h2>Performance Overview</h2>
       <div class="date-selection">
         <label for="performance-date">Select Date:</label>
@@ -101,114 +107,120 @@
       <canvas id="areaChart"></canvas>
     </div>
   </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <div class="overlay" id="overlay">
-      <div class="overlay-content">
-        <h2>Log a Session</h2>
-        <div class="button-container">
-          <button class="overlay-button" id="manual-btn">Manual</button>
-          <button class="overlay-button" id="import-btn">Import</button>
-        </div>
-        <div class="inputdate-container">
-          <label for="session-date">Date</label>
-          <input type="date" id="session-date" name="session-date">
-        </div>
-        <div class="inputtime-container">
-          <label for="session-time">Time</label>
-          <input type="time" id="session-time" name="session-time">
-        </div>
-        <div class="input-distance-container">
-          <label for="distance">Distance</label>
-          <input type="text" id="distance" name="distance">
-          <span>km</span>
-        </div>
-        <h4>Duration</h4>
-        <div class="time-wrapper">
-          <div id="time_wrapper">
-            <div id="time_input">
-              <label for="hours">
-                <input type="number" id="hours" value="0">
-                <span class="label lbl-hrs">hours</span>
-              </label>
-              <span>:</span>
-              <label for="minutes">
-                <input type="number" id="minutes" value="00">
-                <span class="label lbl-min">minutes</span>
-              </label>
-              <span>:</span>
-              <label for="seconds">
-                <input type="number" id="seconds" value="00">
-                <span class="label lbl-sec">seconds</span>
-              </label>
-            </div>
+
+  <!-- Overlay screen after user presses + button. Includes the input fields for user workout-->
+  <div class="overlay" id="overlay">
+    <div class="overlay-content">
+      <h2>Log a Session</h2>
+      <div class="button-container">
+        <button class="overlay-button" id="manual-btn">Manual</button>
+        <button class="overlay-button" id="import-btn">Import</button>
+      </div>
+      <div class="inputdate-container">
+        <label for="session-date">Date</label>
+        <input type="date" id="session-date" name="session-date">
+      </div>
+      <div class="inputtime-container">
+        <label for="session-time">Time</label>
+        <input type="time" id="session-time" name="session-time">
+      </div>
+      <div class="input-distance-container">
+        <label for="distance">Distance</label>
+        <input type="text" id="distance" name="distance">
+        <span>km</span>
+      </div>
+      <h4>Duration</h4>
+      <div class="time-wrapper">
+        <div id="time_wrapper">
+          <div id="time_input">
+            <label for="hours">
+              <input type="number" id="hours" value="0">
+              <span class="label lbl-hrs">hours</span>
+            </label>
+            <span>:</span>
+            <label for="minutes">
+              <input type="number" id="minutes" value="00">
+              <span class="label lbl-min">minutes</span>
+            </label>
+            <span>:</span>
+            <label for="seconds">
+              <input type="number" id="seconds" value="00">
+              <span class="label lbl-sec">seconds</span>
+            </label>
           </div>
-          <div id="error"></div>
         </div>
-        <div class="input-steps-container">
-          <label for="steps">Steps</label>
-          <input type="text" id="steps" name="steps">
-        </div>
-        <div class="input-pace-container">
-        </div>
-        <div class="input-pace-container">
-          <label for="auto-pace">Pace</label>
-          <div id="pace-output"></div>
-          <input type="text" id="auto-pace" name="auto-pace" readonly>
-          <span>min / km</span>
-        </div>
-        <button class="next-button">Next</button>
-        <p id="error-message" class="error-message"></p>
-        <button class="close-btn" onclick="closeOverlay()">X</button>
+        <div id="error"></div>
       </div>
-    </div>
-    <div id="mood-overlay" class="overlay">
-      <div class="overlay-content">
-        <h2>How are you feeling?</h2>
-        <div class="percentage-bar-container">
-          <div class="percentage-bar"></div>
-          <span class="percentage-text">0%</span>
-        </div>
-        <div class="dropdown-container">
-          <label for="mental">Mental</label>
-          <select id="mental">
-            <option value="exhausted" data-percentage="20"selected>Exhausted</option>
-            <option value="tired" data-percentage="40">Tired</option>
-            <option value="content" data-percentage="60">Content</option>
-            <option value="motivated" data-percentage="80">Motivated</option>
-            <option value="happy" data-percentage="100">Happy</option>
-          </select>
-        </div>
-        <div class="dropdown-container">
-          <label for="physical">Physical</label>
-          <select id="physical">
-            <option value="sore" data-percentage="25"selected>Sore</option>
-            <option value="tight" data-percentage="50">Tight</option>
-            <option value="energized" data-percentage="75">Energized</option>
-            <option value="strong" data-percentage="100">Strong</option>
-          </select>
-        </div>
-        <label for="energy">Energy</label>
-        <div class="slider-container">
-          <input type="range" id="energy-slider" min="0" max="100" step="1" value="50">
-          <output id="energy-output">50%</output>
-        </div>
-        <div class="dropdown-container">
-          <label for="breathing">Breathing</label>
-          <select id="breathing">
-            <option value="labored" data-percentage="20"selected>Labored</option>
-            <option value="shallow" data-percentage="40">Shallow</option>
-            <option value="deep" data-percentage="60">Deep</option>
-            <option value="normal" data-percentage="80">Normal</option>
-            <option value="controlled" data-percentage="100">Controlled</option>
-          </select>
-        </div>
-        <button class="submit-button">Submit</button>
-        <button class="close-btn" onclick="closeMoodOverlay()">X</button>
+      <div class="input-steps-container">
+        <label for="steps">Steps</label>
+        <input type="text" id="steps" name="steps">
       </div>
+      <div class="input-pace-container">
+      </div>
+      <div class="input-pace-container">
+        <label for="auto-pace">Pace</label>
+        <div id="pace-output"></div>
+        <input type="text" id="auto-pace" name="auto-pace" readonly>
+        <span>min / km</span>
+      </div>
+      <button class="next-button">Next</button>
+      <p id="error-message" class="error-message"></p>
+      <button class="close-btn" onclick="closeOverlay()">X</button>
     </div>
-    <button id="plus-button" class="plus-button">+</button>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+  </div>
+
+  <!-- Mood overlay screen after user presses 'next' button. Includes the input fields for user mood after workout-->
+  <div id="mood-overlay" class="overlay">
+    <div class="overlay-content">
+      <h2>How are you feeling?</h2>
+      <div class="percentage-bar-container">
+        <div class="percentage-bar"></div>
+        <span class="percentage-text">0%</span>
+      </div>
+      <div class="dropdown-container">
+        <label for="mental">Mental</label>
+        <select id="mental">
+          <option value="exhausted" data-percentage="20" selected>Exhausted</option>
+          <option value="tired" data-percentage="40">Tired</option>
+          <option value="content" data-percentage="60">Content</option>
+          <option value="motivated" data-percentage="80">Motivated</option>
+          <option value="happy" data-percentage="100">Happy</option>
+        </select>
+      </div>
+      <div class="dropdown-container">
+        <label for="physical">Physical</label>
+        <select id="physical">
+          <option value="sore" data-percentage="25" selected>Sore</option>
+          <option value="tight" data-percentage="50">Tight</option>
+          <option value="energized" data-percentage="75">Energized</option>
+          <option value="strong" data-percentage="100">Strong</option>
+        </select>
+      </div>
+      <p></p>
+      <label for="energy">Energy</label>
+      <div class="slider-container">
+        <input type="range" id="energy-slider" min="0" max="100" step="1" value="50">
+        <output id="energy-output">50%</output>
+      </div>
+      <div class="dropdown-container">
+        <label for="breathing">Breathing</label>
+        <select id="breathing">
+          <option value="labored" data-percentage="20" selected>Labored</option>
+          <option value="shallow" data-percentage="40">Shallow</option>
+          <option value="deep" data-percentage="60">Deep</option>
+          <option value="normal" data-percentage="80">Normal</option>
+          <option value="controlled" data-percentage="100">Controlled</option>
+        </select>
+      </div>
+      <button class="submit-button">Submit</button>
+      <button class="close-btn" onclick="closeMoodOverlay()">X</button>
+    </div>
+  </div>
+  <!-- Plus button at bottom right of screen for user to input workout session details -->
+  <button id="plus-button" class="plus-button">+</button>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
   </div>
 </body>
+
 </html>

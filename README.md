@@ -1,14 +1,15 @@
 # DOCUMENTATION
 
 ## RATIONALE
-* Tracking website for runners, designed to track their daily excercise and display progress and target performance. 
+* Tracking website for runners, designed to track their daily excercise and display progress and target performance.
+* Responsive design for both desktop and mobile use.
 * Goals button displays the users targets for each day, reflected on the chart in percentages.
 * Plus button at bottom right allows user to input their progress per day, via an overlay screen. 
 * Pace is automtically calculated based on distance x duration. 
 * Mood overlay allows user to select their feelings after a run using the drop down selectors. 
 * Mood percentage (Top of mood overlay and within the performance breakdown section) is calculated based on pre-determmined percentages of each selection. 
-* Two main sections on the page, performance breakdown and performance overview. 
-* User input from the session is saved to local storage, this data can later be extracted once the user selects a date within the performance overview section. 
+* User input from the session is saved to local storage, this data can later be extracted once the user selects a date within the performance overview section.
+* Two main sections on the page, performance breakdown and performance overview. further details below:
 
 
 ### PERFORMANCE BREAKDOWN
@@ -20,6 +21,8 @@
 
 
 ## REFERENCES 
+CSS Properties - Complete List - Dofactory. (n.d.). Www.dofactory.com. https://www.dofactory.com/css/properties
+
 kleamerkuri. (2023, March 22). How To Build A Killer Custom Time Input. The Helpful Tipper. https://thehelpfultipper.com/how-to-build-custom-time-input/
 
 Date Picker (2020, April 3). MDN Web Docs. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date

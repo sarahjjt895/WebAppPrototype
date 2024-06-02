@@ -110,7 +110,8 @@ h1 {
   width: auto;
   height: auto;
   margin: 0;
-  max-width: 40px;
+  max-width: 5vw;
+  max-height:5vw;
 }
 
 /*style for burger menu button*/ 
@@ -161,7 +162,7 @@ h1 {
   border-radius: 20px;
   background-color: #fff;
   color: #333;
-  border: 2px solid #333;
+  border: 3px solid #e6d9b6;
   cursor: pointer;
   font-size: 18px;
   line-height: 1;
@@ -171,21 +172,79 @@ h1 {
   box-sizing: border-box;
 }
 
-  /* Icon within the goals button */
-.slider-icon {
-  position: relative;
-  margin-left: 15px;
-  vertical-align: middle;
-  max-width: 20%;
-  max-height: 45%;
-  margin-bottom: 70px;
-}
-
 .goals-button span {
   flex: 1;
   text-align: center;
 }
 
+  /* Icon within the goals button */
+.slider-icon {
+  position: relative;
+  margin-left: 15px;
+  vertical-align: middle;
+  max-width: 15pt;
+  max-height: 15pt;
+  margin-bottom: 70px;
+}
+
+  /* Icon within the history clock button */
+  .history-icon {
+    position: relative;
+    margin-left: 15px;
+    vertical-align: middle;
+    max-width: 15pt;
+    max-height: 15pt;
+    margin-bottom: 70px;
+  }
+
+.history-button span {
+  flex: 1;
+  text-align: center;
+}
+
+/*styling for the history overlay and table*/
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #616161; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.history-table th,
+.history-table td {
+  border: 1px solid #8f8e8e; 
+  padding: 8px;
+  text-align: center;
+}
+
+.history-table th {
+  background-color: #f2f2f2;
+  border-bottom: 2px solid #8f8e8e; 
+}
+
+.history-table td:first-child {
+  text-align: left;
+  border-right: 2px solid #8f8e8e; 
+}
+
+.history-table tr:last-child td {
+  border-bottom: none; 
+}
+
+/*styling for the delete button*/
+.delete-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #da190b;
+}
 h3 {
   font-size: 30px;
   font-weight: normal;
@@ -334,39 +393,36 @@ canvas {
 
 /* Log a session overlay screen styling*/
 .overlay {
-  display: none;
-  /* Hide overlay by default */
+  display: none; /* Hide overlay by default */
   position: fixed;
-  top: 30px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-    /* Ensure it is above other content but below the plus button */
   opacity: 0;
   transition: opacity 0.3s ease;
-  /* Add transition effect */
-  animation: 3s;
 }
 
 .overlay.show {
-  display: block;
-  /* Show the overlay container */
-  opacity: 1;
-  /* Make it fully visible */
+  display: flex; /* Show the overlay container */
+  opacity: 1; /* Make it fully visible */
+  align-items: center;
+  justify-content: center;
 }
 
 .overlay-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  max-height: 100%;
+  position: relative;
+  max-width: 80%; /* Adjust the maximum width as needed */
+  max-height: 80%; /* Adjust the maximum height as needed */
+  overflow-y: auto; /* Allow vertical scrolling */
   background-color: #fff;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding-left: 7vw;
+  padding-right: 7vw;
 }
 
 .overlay-content label {
@@ -823,6 +879,37 @@ input:not([type="range"]):focus {
   margin-left: 250px;
 }
 
+.history-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #333;
+  border: 3px solid #e6d9b6;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin-top: 1vw;
+}
+
+
+.history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.history-list li {
+  margin-bottom: 10px;
+}
+
 
 /* styles for responsive screen sizing*/
 @media (min-width: 600px) {
@@ -836,11 +923,7 @@ input:not([type="range"]):focus {
   }
 }
 
-@media (min-width: 600px) {
-  button {
-    flex: 1 1 calc(25% - 10px);
-  }
-}
+
 
 @media (min-width: 900px) {
   .controls {

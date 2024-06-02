@@ -297,7 +297,6 @@ document.querySelectorAll('select, #energy-slider').forEach(element => {
     element.addEventListener('change', calculateAverage);
 });
 
-//function to save the data from the input fields, then populate the circles once submitted
 function saveAndPopulate() {
     // Retrieve data from input fields
     const distance = document.getElementById('distance').value;
@@ -306,13 +305,19 @@ function saveAndPopulate() {
     const pace = document.getElementById('auto-pace').value;
 
     // Save data to local storage
-    localStorage.setItem('runwise_data', JSON.stringify({
+    let runwiseData = JSON.parse(localStorage.getItem('runwise_data')) || {};
+
+    runwiseData = {
+        ...runwiseData,
         distance: distance,
         duration: duration,
         steps: steps,
         pace: pace
-    }));
+    };
+
+    localStorage.setItem('runwise_data', JSON.stringify(runwiseData));
 }
+
 
 // Event listener for the Next button on the overlay
 document.querySelector('.next-button').addEventListener('click', function () {
@@ -582,9 +587,125 @@ document.addEventListener('DOMContentLoaded', function () {
         closeGoalsOverlay();
     });
 });
-
+//Handle the resizing of the chart when screen size is increased or reduced
 function handleResize() {
     if (window.performanceChart) {
         window.performanceChart.resize();
     }
 }
+
+//show the history overlay when the history button is selected
+document.addEventListener('DOMContentLoaded', function () {
+    const historyButton = document.querySelector('.history-button');
+    const historyOverlay = document.getElementById('historyOverlay');
+
+    historyButton.addEventListener('click', function () {
+        historyOverlay.classList.add('show');
+    });
+
+    function closeHistoryOverlay() {
+        historyOverlay.classList.remove('show');
+    }
+
+    // Close the overlay if clicked outside the content
+    historyOverlay.addEventListener('click', function (e) {
+        if (e.target === historyOverlay) {
+            closeHistoryOverlay();
+        }
+    });
+
+    // Close the overlay on clicking the close button
+    const closeButton = historyOverlay.querySelector('.close-btn');
+    closeButton.addEventListener('click', closeHistoryOverlay);
+
+   // Close the overlay on clicking the confirm button
+   const confirmButton = historyOverlay.querySelector('.confirm-button');
+   confirmButton.addEventListener('click', function () {
+       closeHistoryOverlay();
+   });
+});
+
+// History overlay retrieving the data from the local storage, displaying in a table and allowing the user to delete input data.
+document.addEventListener('DOMContentLoaded', function () {
+    const historyButton = document.querySelector('.history-button');
+    const historyOverlay = document.getElementById('historyOverlay');
+    const historyContent = document.querySelector('.history-content');
+
+    historyButton.addEventListener('click', function () {
+        displayHistory();
+        historyOverlay.classList.add('show');
+    });
+
+    function closeHistoryOverlay() {
+        historyOverlay.classList.remove('show');
+    }
+
+    // Close the overlay if clicked outside the content
+    historyOverlay.addEventListener('click', function (e) {
+        if (e.target === historyOverlay) {
+            closeHistoryOverlay();
+        }
+    });
+
+    // Close the overlay on clicking the close button
+    const closeButton = historyOverlay.querySelector('.close-btn');
+    closeButton.addEventListener('click', closeHistoryOverlay);
+
+    // Function to retrieve all data from local storage and display it in a table
+    function displayHistory() {
+        historyContent.innerHTML = ''; // Clear previous content
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+
+            // Parse the JSON string stored in local storage
+            const data = JSON.parse(value);
+
+            // Create a new table row
+            const row = document.createElement('tr');
+
+            // Create and append a cell for the date
+            const dateCell = document.createElement('td');
+            dateCell.textContent = key;
+            row.appendChild(dateCell);
+
+            // Create a cell for each data item and append to the row
+            const dataLabels = ['Distance', 'Duration', 'Steps', 'Pace'];
+            dataLabels.forEach(label => {
+                const dataItem = data.find(item => item.label === label);
+                const cell = document.createElement('td');
+
+                // Format the number to round up and display as a percentage
+                if (dataItem) {
+                    let formattedValue = Math.round(dataItem.value) + '%';
+                    if (formattedValue === '100%') {
+                        formattedValue = '100%';
+                    }
+                    cell.textContent = formattedValue;
+                } else {
+                    cell.textContent = '';
+                }
+
+                row.appendChild(cell);
+            });
+
+            // Create a cell for the delete button
+            const deleteCell = document.createElement('td');
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete-btn');
+            deleteButton.addEventListener('click', function () {
+                // Remove the corresponding entry from local storage
+                localStorage.removeItem(key);
+
+                // Re-display the updated history
+                displayHistory();
+            });
+            deleteCell.appendChild(deleteButton);
+            row.appendChild(deleteCell);
+
+            // Append the row to the table body
+            historyContent.appendChild(row);
+        }
+    }
+});

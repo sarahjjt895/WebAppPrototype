@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <!-- Nav bar section with user profile, user goals button and placeholder tabs -->
+  <!-- Nav bar section with user profile, user goals button, history and placeholder tabs -->
   <div class="container">
     <div class="Nav-Bar" id="navBar">
       <img src="usericon.png" alt="User-Icon">
@@ -32,8 +32,13 @@
         <img class="slider-icon" src="slider-icon.png" alt="slider-Icon">
         <span>Goals</span>
       </button>
+
+      <button class="history-button">
+        <img class="history-icon" src="history-icon.png" alt="history-Icon">
+        <span>History</span>
+    </button>
+
       <p> Home</p>
-      <p> Statistics</p>
       <p> Training</p>
       <p> Notifications</p>
       <p> Settings</p>
@@ -71,6 +76,29 @@
         <button class="close-btn" onclick="closeGoalsOverlay()">X</button>
       </div>
     </div>
+
+   <!-- Overlay for the history button displaying all user input retrieved from local storage -->
+    <div class="overlay" id="historyOverlay">
+      <div class="overlay-content">
+          <h2>Input History</h2>
+          <div class="inline-block-container"></div>
+          <table class="history-table">
+              <thead>
+                  <tr>
+                      <th>Date</th>
+                      <th>Distance</th>
+                      <th>Duration</th>
+                      <th>Steps</th>
+                      <th>Pace</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody class="history-content"></tbody>
+          </table>
+          <button class="confirm-button">Confirm</button>
+          <button class="close-btn" onclick="closeHistoryOverlay()">X</button>
+      </div>
+  </div>
 
     <!-- Performance breakdown section with circles and detail view of stats -->
     <div class="Performance-Breakdown" id="performanceBreakdown">
